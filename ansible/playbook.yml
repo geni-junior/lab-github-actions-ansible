@@ -1,0 +1,16 @@
+- name: Criar arquivo no servidor via Ansible
+  hosts: server
+  become: true
+
+  tasks:
+    - name: Criar diretório /root/lab-github-actions
+      file:
+        path: /root/lab-github-actions
+        state: directory
+        mode: "0755"
+
+    - name: Criar arquivo arquivo-criado-com-pipe-actions.txt
+      copy:
+        dest: /root/lab-github-actions/arquivo-criado-com-pipe-actions.txt
+        content: "Arquivo criado pelo GitHub Actions executando Ansible\n"
+        mode: "0644"
